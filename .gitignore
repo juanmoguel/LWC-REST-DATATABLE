@@ -4,7 +4,11 @@
 
 # Salesforce cache
 .sfdx/
+.vsCode/
 .localdevserver/
+config/
+
+
 
 # LWC VSCode autocomplete
 **/lwc/jsconfig.json
