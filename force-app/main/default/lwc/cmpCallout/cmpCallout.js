@@ -3,10 +3,10 @@ import restdatapull from '@salesforce/apex/INEGICallout.callout';
 export default class CmpCallout extends LightningElement {
     @track responsedata;
     @track columns = [
-        { label: 'SelfLink', fieldName: 'selfLink', type: 'text' },
+        { label: 'Book Cover', fieldName: 'selfLink', type: 'image' },
         { label: 'Title', fieldName: 'title', type: 'text' },
         { label: 'Language', fieldName: 'language', type: 'text' },
-        { label: 'Snippet', fieldName: 'textSnippet', type: 'text' },
+        { label: 'Authors', fieldName: 'textSnippet', type: 'text' },
         { label: 'Published date', fieldName: 'publishedDate', type: 'date' },
         { label: 'Country', fieldName: 'country', type: 'text' }
     ];
@@ -21,6 +21,7 @@ export default class CmpCallout extends LightningElement {
 
     makeCall() {
         restdatapull().then(result => {
+            console.log('result 0 ' + result);
             console.log('result: ' + JSON.stringify(result));
             this.totalRecountCount = result.totalItems;
             console.log('totalItems---' + this.totalRecountCount);
@@ -68,10 +69,11 @@ export default class CmpCallout extends LightningElement {
         var cleanData = [];
         for (let index = 0; index < data.length; index++) {
             var oneColum = new Object();
-            oneColum.selfLink = data[index].selfLink;
+            oneColum.selfLink = data[index].volumeInfo.imageLinks.smallThumbnail;
             oneColum.title = data[index].volumeInfo.title;
             oneColum.language = data[index].volumeInfo.language;
-            oneColum.textSnippet = data[index].searchInfo.textSnippet;
+            oneColum.textSnippet = data[index].volumeInfo.authors.toString();
+            console.log('authors' + oneColum.textSnippet);
             oneColum.publishedDate = data[index].volumeInfo.publishedDate;
             oneColum.country = data[index].saleInfo.country;
             cleanData.push(oneColum);

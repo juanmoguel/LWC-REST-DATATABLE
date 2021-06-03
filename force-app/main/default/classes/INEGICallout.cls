@@ -12,7 +12,7 @@ public with sharing class INEGICallout{
 			HttpResponse response = cu.send();
 			// I use this complete wrapper in order to update the data table in future or save data to Salesforce DataBase
 			BookWrapper bookList = (BookWrapper)JSON.deserialize(response.getBody(), BookWrapper.class);
-			System.debug('BookList total items' + bookList.totalItems);
+			System.debug('BookList total items' + bookList);
 			return bookList;
 		} catch (Exception e){
 			throw new AuraHandledException(e.getMessage());

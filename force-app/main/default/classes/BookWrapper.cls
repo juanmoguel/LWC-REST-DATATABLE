@@ -219,6 +219,10 @@ public class BookWrapper{
 		@AuraEnabled
 		public String previewLink;
 		@AuraEnabled
+		public ImageLinks imageLinks;
+		@AuraEnabled
+		public List<String> authors;
+		@AuraEnabled
 		public String infoLink;
 		@AuraEnabled
 		public String canonicalVolumeLink;
