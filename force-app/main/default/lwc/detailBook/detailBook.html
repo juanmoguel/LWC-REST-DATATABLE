@@ -1,0 +1,23 @@
+<!--
+  @description       : 
+  @Ticket            : 
+  @author            : Juan Moguel
+  @group             : 
+  @last modified on  : 06-23-2021
+  @last modified by  : Juan Moguel
+  Modifications Log 
+  Ver   Date         Author        Modification
+  1.0   06-23-2021   Juan Moguel   Initial Version
+-->
+<template>
+  <lightning-card title={bookName} icon-name={detailsTabIconName}>
+    <lightning-button label={label.labelFullDetails} onclick={navigateToRecordViewPage} slot="actions"></lightning-button>
+    <lightning-record-view-form record-id={bookId} object-api-name='Boat__c' density='compact'>
+        <lightning-output-field field-name="BoatType__c"></lightning-output-field>
+        <lightning-output-field field-name="Length__c"></lightning-output-field>
+        <lightning-output-field field-name="Price__c"></lightning-output-field>
+        <lightning-output-field field-name="Description__c"></lightning-output-field>
+    </lightning-record-view-form>
+</lightning-card>
+      
+</template>
